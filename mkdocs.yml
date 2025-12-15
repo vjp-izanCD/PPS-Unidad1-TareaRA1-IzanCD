@@ -12,7 +12,6 @@ theme:
     repo: fontawesome/brands/github
   favicon: material/shield-check
 
-  extra_css:
   
     # Modo claro
     - scheme: default
