@@ -12,11 +12,8 @@ theme:
     repo: fontawesome/brands/github
   favicon: material/shield-check
 
-    custom_dir: docs
   extra_css:
-    - stylesheets/custom.css
   
-  palette:
     # Modo claro
     - scheme: default
       primary: deep purple
@@ -95,6 +92,9 @@ extra:
       link: https://github.com/vjp-izanCD
       name: GitHub Profile
   generator: false
+
+  extra_css:
+  - stylesheets/custom.css
 
 nav:
   - 🏠 Inicio: index.md
