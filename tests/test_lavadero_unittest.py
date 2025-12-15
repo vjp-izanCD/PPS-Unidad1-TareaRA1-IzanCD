@@ -24,7 +24,8 @@ class TestLavadero(unittest.TestCase):
         self.assertEqual(self.lavadero.fase, Lavadero.FASE_INACTIVO)
         self.assertFalse(self.lavadero.ocupado)
         self.assertFalse(self.lavadero.prelavado_a_mano)
-        self.assertTrue(self.lavadero.ingresos > 0) # Los ingresos deben mantenerse
+        # Los ingresos deben mantenerse
+        self.assertTrue(self.lavadero.ingresos > 0)
         
     # ----------------------------------------------------------------------
     # TESTS  
@@ -42,27 +43,28 @@ class TestLavadero(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.lavadero._hacer_lavado(False, False, True)
 
-    
-    
-
     # ----------------------------------------------------------------------
     # Tests de flujo de fases
-    # Utilizamos la función def ejecutar_y_obtener_fases(self, prelavado, secado, encerado)
-    # Estos tests dan errores ya que en el código original hay errores en las las fases esperados, en los saltos.
+    # Utilizamos la función ejecutar_y_obtener_fases(self, prelavado, secado, encerado)
     # ----------------------------------------------------------------------
     def test9_flujo_rapido_sin_extras(self):
         """Test 9: Simula el flujo rápido sin opciones opcionales."""
         fases_esperadas = [0, 1, 3, 4, 5, 6, 0]
          
         # Ejecutar el ciclo completo y obtener las fases
-        fases_obtenidas = self.lavadero.ejecutar_y_obtener_fases(prelavado=False, secado=False, encerado=False)
+        fases_obtenidas = self.lavadero.ejecutar_y_obtener_fases(
+            prelavado=False,
+            secado=False,
+            encerado=False
+        )
         
         # Verificar que las fases obtenidas coinciden con las esperadas
-        self.assertEqual( ,  ,
-                        f"Secuencia de fases incorrecta.\nEsperadas: {fases_esperadas}\nObtenidas: {fases_obtenidas}")
+        self.assertEqual(
+            fases_esperadas,
+            fases_obtenidas,
+            f"Secuencia de fases incorrecta.\nEsperadas: {fases_esperadas}\nObtenidas: {fases_obtenidas}"
+        )
       
-    
- 
 # Bloque de ejecución para ejecutar los tests si el archivo es corrido directamente
 if __name__ == '__main__':
     unittest.main()
