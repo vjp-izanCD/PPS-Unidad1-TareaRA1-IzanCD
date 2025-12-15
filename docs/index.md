@@ -23,20 +23,15 @@ Esta tarea tiene como objetivo principal demostrar las competencias en:
 
 La documentacion esta organizada en los siguientes apartados:
 
-### Apartado 1: Elementos de Python
-Documentacion detallada del codigo fuente de la aplicacion lavadero, incluyendo comentarios explicativos de clases, metodos y flujos de control.
+### Análisis y Documentación del Código PythonDocumentacion detallada del codigo fuente de la aplicacion lavadero, incluyendo comentarios explicativos de clases, metodos y flujos de control.
 
-### Apartado 2: Ejecucion y Depuracion
-Proceso de ejecucion y depuracion de la aplicacion en Visual Studio Code, incluyendo identificacion y resolucion de errores.
+### Ejecución y Depuración de la AplicaciónProceso de ejecucion y depuracion de la aplicacion en Visual Studio Code, incluyendo identificacion y resolucion de errores.
 
-### Apartado 3: Pruebas Unitarias
-Implementacion completa de 14 tests unitarios que validan el funcionamiento correcto de la aplicacion lavadero.
+### Implementación de Tests UnitariosImplementacion completa de 14 tests unitarios que validan el funcionamiento correcto de la aplicacion lavadero.
 
-### Apartado 4: Sandbox
-Ejecucion de la aplicacion en un entorno controlado para validar su comportamiento aislado.
+### Ejecución en Entorno Controlado (Sandbox)Ejecucion de la aplicacion en un entorno controlado para validar su comportamiento aislado.
 
-### Apartado 5: Reflexion sobre Seguridad
-Analisis comparativo de las infraestructuras de seguridad de diferentes lenguajes de programacion.
+### Reflexión sobre Infraestructuras de SeguridadAnalisis comparativo de las infraestructuras de seguridad de diferentes lenguajes de programacion.
 
 ## Aplicacion: Sistema de Lavadero
 
@@ -64,8 +59,8 @@ La aplicacion implementa un sistema de gestion de lavadero de coches que:
 
 ## Navegacion por los Apartados
 
-- [Apartado 1: Elementos de Python](apartado1.md)
-- [Apartado 2: Ejecucion y Depuracion](apartado2.md)
-- [Apartado 3: Pruebas Unitarias](apartado3.md)
-- [Apartado 4: Sandbox](apartado4.md)
-- [Apartado 5: Reflexion sobre Seguridad](apartado5.md)
+- [Análisis y Documentación del Código Python](apartado1.md)
+- [Ejecución y Depuración de la Aplicación](apartado2-ejecucion-depuracion.md)
+- [Implementación de Tests Unitarios](apartado3.md)
+- [Ejecución en Entorno Controlado (Sandbox)](apartado4-sandbox.md)
+- [Reflexión sobre Infraestructuras de Seguridad](apartado5.md)
