@@ -53,8 +53,8 @@ markdown_extensions:
 
 nav:
   - Inicio: index.md
-  - Apartado 1 - Analisis de Codigo: apartado1-analisis-codigo.md
-    - Apartado 2 - Ejecucion y Depuracion: apartado2-ejecucion-depuracion.md
-    - Apartado 3 - Tests Unitarios: apartado3-tests.md
-    - Apartado 4 - Sandbox: apartado4-sandbox.md
-  - Apartado 5 - Reflexion Seguridad: apartado5-reflexion-seguridad.md
+  - Apartado 1 - Analisis de Codigo:
+    - Apartado 2 - Ejecucion y Depuracion:
+    - Apartado 3 - Tests Unitarios:
+    - Apartado 4 - Sandbox:
+  - Apartado 5 - Reflexion Seguridad:
