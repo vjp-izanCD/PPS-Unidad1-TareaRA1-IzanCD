@@ -11,6 +11,10 @@ theme:
     logo: material/shield-lock
     repo: fontawesome/brands/github
   favicon: material/shield-check
+
+    custom_dir: docs
+  extra_css:
+    - stylesheets/custom.css
   
   palette:
     # Modo claro
