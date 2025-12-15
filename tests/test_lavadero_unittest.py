@@ -2,7 +2,7 @@
 
 import unittest
 # Importamos la clase Lavadero desde el módulo padre
-from lavadero import Lavadero
+from src.lavadero import Lavadero
 
 class TestLavadero(unittest.TestCase):
     
