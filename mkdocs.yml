@@ -1,0 +1,60 @@
+site_name: Tarea Unidad 1 - Prueba de Aplicaciones
+site_description: Documentacion de la Tarea Obligatoria RA1 - Puesta en Produccion Segura
+site_author: Izan CD
+repo_url: https://github.com/vjp-izanCD/PPS-Unidad1-TareaRA1-IzanCD
+repo_name: GitHub
+
+theme:
+  name: material
+  language: es
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Cambiar a modo oscuro
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Cambiar a modo claro
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+
+plugins:
+  - search:
+      lang: es
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+
+nav:
+  - Inicio: index.md
+  - Apartado 1 - Elementos de Python: elementos-python.md
+  - Apartado 2 - Ejecucion y Depuracion: ejecucion-depuracion.md
+  - Apartado 3 - Pruebas Unitarias: pruebas.md
+  - Apartado 4 - Sandbox: sandbox.md
+  - Apartado 5 - Reflexion Seguridad: reflexion-seguridad.md
