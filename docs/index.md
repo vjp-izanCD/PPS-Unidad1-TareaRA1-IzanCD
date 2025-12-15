@@ -60,3 +60,12 @@ La aplicacion implementa un sistema de gestion de lavadero de coches que:
 - [Repositorio en GitHub](https://github.com/vjp-izanCD/PPS-Unidad1-TareaRA1-IzanCD)
 - [Codigo Fuente](https://github.com/vjp-izanCD/PPS-Unidad1-TareaRA1-IzanCD/tree/main/src)
 - [Tests Unitarios](https://github.com/vjp-izanCD/PPS-Unidad1-TareaRA1-IzanCD/tree/main/tests)
+
+
+## Navegacion por los Apartados
+
+- [Apartado 1: Elementos de Python](apartado1.md)
+- [Apartado 2: Ejecucion y Depuracion](apartado2.md)
+- [Apartado 3: Pruebas Unitarias](apartado3.md)
+- [Apartado 4: Sandbox](apartado4.md)
+- [Apartado 5: Reflexion sobre Seguridad](apartado5.md)
