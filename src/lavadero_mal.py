@@ -3,9 +3,9 @@
 class Lavadero:
     """
     Simula el estado y las operaciones de un túnel de lavado de coches.
+    Cumple con los requisitos de estado, avance de fase y reglas de negocio.
     """
 
-    # Constantes de fase
     FASE_INACTIVO = 0
     FASE_COBRANDO = 1
     FASE_PRELAVADO_MANO = 2
@@ -19,6 +19,7 @@ class Lavadero:
     def __init__(self):
         """
         Constructor de la clase. Inicializa el lavadero.
+        Cumple con el requisito 1.
         """
         self.__ingresos = 0.0
         self.__fase = self.FASE_INACTIVO
@@ -26,10 +27,8 @@ class Lavadero:
         self.__prelavado_a_mano = False
         self.__secado_a_mano = False
         self.__encerado = False
+        self.terminar() 
 
-    # ------------------------
-    # PROPERTIES (solo lectura)
-    # ------------------------
     @property
     def fase(self):
         return self.__fase
@@ -41,7 +40,7 @@ class Lavadero:
     @property
     def ocupado(self):
         return self.__ocupado
-
+    
     @property
     def prelavado_a_mano(self):
         return self.__prelavado_a_mano
@@ -54,133 +53,98 @@ class Lavadero:
     def encerado(self):
         return self.__encerado
 
-    # ------------------------
-    # CONTROL DE ESTADO
-    # ------------------------
     def terminar(self):
-        """
-        Resetea el estado del lavadero al modo inactivo,
-        pero NO modifica los ingresos acumulados.
-        """
         self.__fase = self.FASE_INACTIVO
         self.__ocupado = False
         self.__prelavado_a_mano = False
         self.__secado_a_mano = False
         self.__encerado = False
-
-    # ------------------------
-    # INICIO DEL LAVADO
-    # ------------------------
-    def _hacer_lavado(self, prelavado_a_mano: bool, secado_a_mano: bool, encerado: bool):
+    
+    def hacerLavado(self, prelavado_a_mano, secado_a_mano, encerado):
         """
         Inicia un nuevo ciclo de lavado, validando reglas de negocio.
-
-        - No se puede iniciar si está ocupado.
-        - No se puede encerar sin haber elegido secado a mano.
+        
+        :raises RuntimeError: Si el lavadero está ocupado (Requisito 3).
+        :raises ValueError: Si se intenta encerar sin secado a mano (Requisito 2).
         """
         if self.__ocupado:
             raise RuntimeError("No se puede iniciar un nuevo lavado mientras el lavadero está ocupado")
-
+        
         if not secado_a_mano and encerado:
             raise ValueError("No se puede encerar el coche sin secado a mano")
-
-        # Configuramos el nuevo ciclo
-        self.__fase = self.FASE_INACTIVO
+        
+        self.__fase = self.FASE_INACTIVO  
         self.__ocupado = True
         self.__prelavado_a_mano = prelavado_a_mano
         self.__secado_a_mano = secado_a_mano
         self.__encerado = encerado
+        
 
-    # ------------------------
-    # COBRO
-    # ------------------------
     def _cobrar(self):
         """
-        Calcula y añade los ingresos según las opciones seleccionadas.
-
-        Precio base: 5.00 €
-        + 1.50 € si hay prelavado a mano
-        + 1.00 € si hay secado a mano
-        + 1.20 € si hay encerado
+        Calcula y añade los ingresos según las opciones seleccionadas (Requisitos 4-8).
+        Precio base: 5.00€ (Implícito, 5.00€ de base + 1.50€ de prelavado + 1.00€ de secado + 1.20€ de encerado = 8.70€)
         """
         coste_lavado = 5.00
-
+        
         if self.__prelavado_a_mano:
-            coste_lavado += 1.50
-
+            coste_lavado += 1.50 
+        
         if self.__secado_a_mano:
-            coste_lavado += 1.00
-
+            coste_lavado += 1.20 
+            
         if self.__encerado:
-            coste_lavado += 1.20
-
+            coste_lavado += 1.00 
+            
         self.__ingresos += coste_lavado
         return coste_lavado
 
-    # ------------------------
-    # AVANCE DE FASES
-    # ------------------------
     def avanzarFase(self):
-        """
-        Avanza una fase en el ciclo de lavado según las reglas de negocio.
-        Cuando se termina el ciclo, llama a terminar().
-        """
+       
         if not self.__ocupado:
-            # Si no está ocupado, no hay nada que avanzar
             return
 
         if self.__fase == self.FASE_INACTIVO:
-            # Primera transición: cobrar
-            self._cobrar()
+            coste_cobrado = self._cobrar()
             self.__fase = self.FASE_COBRANDO
+            print(f" (COBRADO: {coste_cobrado:.2f} €) ", end="")
 
         elif self.__fase == self.FASE_COBRANDO:
-            # Dependiendo del prelavado vamos a PRELAVADO o directamente a AGUA
             if self.__prelavado_a_mano:
                 self.__fase = self.FASE_PRELAVADO_MANO
             else:
-                self.__fase = self.FASE_ECHANDO_AGUA
-
+                self.__fase = self.FASE_ECHANDO_AGUA 
+        
         elif self.__fase == self.FASE_PRELAVADO_MANO:
             self.__fase = self.FASE_ECHANDO_AGUA
-
+        
         elif self.__fase == self.FASE_ECHANDO_AGUA:
             self.__fase = self.FASE_ENJABONANDO
 
         elif self.__fase == self.FASE_ENJABONANDO:
             self.__fase = self.FASE_RODILLOS
-
+        
         elif self.__fase == self.FASE_RODILLOS:
-            # Si hay secado a mano, primero secado automático → luego secado a mano
             if self.__secado_a_mano:
-                self.__fase = self.FASE_SECADO_AUTOMATICO
-            else:
-                # Sin secado a mano, sólo secado automático
-                self.__fase = self.FASE_SECADO_AUTOMATICO
+                self.__fase = self.FASE_SECADO_AUTOMATICO 
 
-        elif self.__fase == self.FASE_SECADO_AUTOMATICO:
-            if self.__secado_a_mano:
-                # Pasamos a secado a mano
+            else:
                 self.__fase = self.FASE_SECADO_MANO
-            else:
-                # Sin secado a mano, terminamos directamente
-                self.terminar()
-
-        elif self.__fase == self.FASE_SECADO_MANO:
-            if self.__encerado:
-                self.__fase = self.FASE_ENCERADO
-            else:
-                self.terminar()
-
-        elif self.__fase == self.FASE_ENCERADO:
+        
+        elif self.__fase == self.FASE_SECADO_AUTOMATICO:
             self.terminar()
+        
+        elif self.__fase == self.FASE_SECADO_MANO:
 
+            self.terminar() 
+        
+        elif self.__fase == self.FASE_ENCERADO:
+            self.terminar() 
+        
         else:
             raise RuntimeError(f"Estado no válido: Fase {self.__fase}. El lavadero va a estallar...")
 
-    # ------------------------
-    # IMPRESIÓN (para debug)
-    # ------------------------
+
     def imprimir_fase(self):
         fases_map = {
             self.FASE_INACTIVO: "0 - Inactivo",
@@ -195,6 +159,7 @@ class Lavadero:
         }
         print(fases_map.get(self.__fase, f"{self.__fase} - En estado no válido"), end="")
 
+
     def imprimir_estado(self):
         print("----------------------------------------")
         print(f"Ingresos Acumulados: {self.ingresos:.2f} €")
@@ -205,24 +170,18 @@ class Lavadero:
         print("Fase: ", end="")
         self.imprimir_fase()
         print("\n----------------------------------------")
+        
+    # Esta función es útil para pruebas unitarias, no es parte del lavadero real
+    # nos crea un array con las fases visitadas en un ciclo completo
 
-    # ------------------------
-    # FUNCIÓN PARA TESTS
-    # ------------------------
-    def ejecutar_y_obtener_fases(self, prelavado, secado, encerado):
-        """
-        Ejecuta un ciclo completo y devuelve la lista de fases visitadas.
-        Usada por los tests unitarios.
-        """
-        # Inicia el lavado mediante la API interna que usa el test
+def ejecutar_y_obtener_fases(self, prelavado, secado, encerado):
+        """Ejecuta un ciclo completo y devuelve la lista de fases visitadas."""
         self._hacer_lavado(prelavado, secado, encerado)
-
         fases_visitadas = [self.fase]
 
-        # Avanzamos mientras el lavadero siga ocupado
         while self.ocupado:
-            # Límite de seguridad contra bucles infinitos
-            if len(fases_visitadas) > 20:
+            # Usamos un límite de pasos para evitar bucles infinitos en caso de error
+            if len(fases_visitadas) > 15:
                 raise Exception("Bucle infinito detectado en la simulación de fases.")
             self.avanzarFase()
             fases_visitadas.append(self.fase)
