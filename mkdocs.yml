@@ -1,106 +1,145 @@
-site_name: 🔐 PPS - Prueba de Aplicaciones
-site_description: Documentación Tarea RA1 - Puesta en Produccion Segura
+site_name: PPS - Prueba de Aplicaciones
+site_description: Documentación Tarea RA1 - Análisis y Testing de Aplicaciones
 site_author: Izan CD
+site_url: https://vjp-izancd.github.io/PPS-Unidad1-TareaRA1-IzanCD/
+
 repo_url: https://github.com/vjp-izanCD/PPS-Unidad1-TareaRA1-IzanCD
 repo_name: GitHub
+edit_uri: edit/main/docs/
 
 theme:
   name: material
   language: es
-  icon:
-    logo: material/shield-lock
-    repo: fontawesome/brands/github
-  favicon: material/shield-check
-
-    palette:
-
   
-    # Modo claro
-    - scheme: default
-      primary: deep purple
-      accent: cyan
-      toggle:
-        icon: material/brightness-7
-        name: Cambiar a modo oscuro
-    # Modo oscuro  
+  palette:
     - scheme: slate
-      primary: deep purple
-      accent: cyan
+      primary: indigo
+      accent: teal
       toggle:
-        icon: material/brightness-4
-        name: Cambiar a modo claro
-        
+        icon: material/weather-night
+        name: Modo claro
+    - scheme: default  
+      primary: indigo
+      accent: teal
+      toggle:
+        icon: material/weather-sunny
+        name: Modo oscuro
+  
   font:
-    text: Roboto
-    code: Fira Code
-    
+    text: Inter
+    code: JetBrains Mono
+  
+  icon:
+    logo: material/security
+    repo: fontawesome/brands/github
+    edit: material/pencil
+    view: material/eye
+  
+  favicon: material/shield-check
+  
   features:
+    - announce.dismiss
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate
+    - content.code.copy
+    - content.tabs.link
+    - content.tooltips
+    - header.autohide
+    - navigation.expand
+    - navigation.footer
+    - navigation.indexes
     - navigation.instant
     - navigation.instant.prefetch
-    - navigation.tracking
+    - navigation.instant.progress
+    - navigation.path
+    - navigation.sections
     - navigation.tabs
     - navigation.tabs.sticky
-    - navigation.sections
-    - navigation.expand
     - navigation.top
-    - navigation.footer
-    - search.suggest
+    - navigation.tracking
     - search.highlight
     - search.share
-    - content.code.copy
-    - content.code.annotate
-    - content.tabs.link
+    - search.suggest
     - toc.follow
+    - toc.integrate
 
 plugins:
   - search:
+      separator: '[\\s\\u200b\\-_,:!=\\[\\]()""/]+|(?!\\b)(?=[A-Z][a-z])|\\."
       lang: es
 
 markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      toc_depth: 3
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
   - pymdownx.inlinehilite
-  - pymdownx.snippets
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      normalize_issue_symbols: true
+      repo_url_shorthand: true
+      user: vjp-izanCD
+      repo: PPS-Unidad1-TareaRA1-IzanCD
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      auto_append:
+        - includes/abbreviations.md
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
-  - pymdownx.details
   - pymdownx.tabbed:
       alternate_style: true
-  - admonition
-  - attr_list
-  - md_in_html
-  - tables
-  - toc:
-      permalink: true
-  - pymdownx.emoji:
-      emoji_index: !!python/name:material.extensions.emoji.twemoji
-      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      combine_header_slug: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
   - pymdownx.tasklist:
       custom_checkbox: true
-  - pymdownx.mark
-  - pymdownx.caret
   - pymdownx.tilde
-  - pymdownx.keys
 
 extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/vjp-izanCD
-      name: GitHub Profile
+      name: GitHub
   generator: false
-
-  extra_css:
+  
+extra_css:
   - stylesheets/custom.css
 
 nav:
-  - 🏠 Inicio: index.md
-  - 📊 Análisis de Código: apartado1-analisis-codigo.md
-  - 🐛 Ejecución y Depuración: apartado2-ejecucion-depuracion.md  
-  - ✅ Tests Unitarios: apartado3-tests.md
-  - 🔬 Sandbox: apartado4-sandbox.md
-  - 🔒 Reflexión Seguridad: apartado5-reflexion-seguridad.md
+  - Inicio:
+    - index.md
+  - Análisis de Código:
+    - apartado1-analisis-codigo.md
+  - Ejecución y Depuración:
+    - apartado2-ejecucion-depuracion.md
+  - Tests Unitarios:
+    - apartado3-tests.md
+  - Entorno Controlado:
+    - apartado4-sandbox.md
+  - Reflexión de Seguridad:
+    - apartado5-reflexion-seguridad.md
