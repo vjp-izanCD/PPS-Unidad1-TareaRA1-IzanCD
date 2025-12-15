@@ -126,8 +126,6 @@ extra:
       name: GitHub
   generator: false
   
-extra_css:
-  - stylesheets/custom.css
 
 nav:
   - Inicio:
