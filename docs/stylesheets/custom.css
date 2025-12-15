@@ -1,0 +1,290 @@
+/* ========================================
+   DISEÑO CUSTOM PASTEL - PPS DOCUMENTACIÓN
+   ======================================== */
+
+:root {
+  /* Colores Pasteles Suaves */
+  --pastel-lavender: #E6E6FA;
+  --pastel-mint: #D5F4E6;
+  --pastel-peach: #FFE5D9;
+  --pastel-sky: #D4E9F7;
+  --pastel-rose: #FFD6E8;
+  --pastel-lemon: #FFF9C4;
+  --pastel-periwinkle: #C5CAE9;
+  
+  /* Colores de Texto Suaves */
+  --text-primary: #4A4A6A;
+  --text-secondary: #7B7B9E;
+  --text-muted: #A8A8C4;
+  
+  /* Backgrounds */
+  --bg-main: #F8F9FE;
+  --bg-card: #FFFFFF;
+  --bg-hover: #F0F2FF;
+}
+
+/* ===== RESET Y BASE ===== */
+* {
+  transition: all 0.3s ease;
+}
+
+body {
+  background: linear-gradient(135deg, var(--pastel-lavender) 0%, var(--pastel-sky) 100%) !important;
+  background-attachment: fixed !important;
+}
+
+/* ===== HEADER REDISEÑADO ===== */
+.md-header {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+  border-bottom: 2px solid var(--pastel-lavender) !important;
+}
+
+.md-header__title {
+  font-weight: 700 !important;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 1.3rem !important;
+}
+
+/* ===== TABS DE NAVEGACIÓN ===== */
+.md-tabs {
+  background: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(8px) !important;
+  border-bottom: none !important;
+}
+
+.md-tabs__link {
+  margin: 0 8px !important;
+  padding: 12px 24px !important;
+  border-radius: 20px !important;
+  font-weight: 600 !important;
+  color: var(--text-secondary) !important;
+  font-size: 0.95rem !important;
+}
+
+.md-tabs__link:hover {
+  background: var(--pastel-mint) !important;
+  color: var(--text-primary) !important;
+  transform: translateY(-2px);
+}
+
+.md-tabs__link--active {
+  background: linear-gradient(135deg, var(--pastel-lavender), var(--pastel-sky)) !important;
+  color: var(--text-primary) !important;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3) !important;
+}
+
+/* ===== CONTENIDO PRINCIPAL ===== */
+.md-content {
+  background: transparent !important;
+}
+
+article.md-content__inner {
+  background: var(--bg-card) !important;
+  border-radius: 24px !important;
+  padding: 48px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06) !important;
+  margin: 24px auto !important;
+  max-width: 900px !important;
+  border: 2px solid rgba(255, 255, 255, 0.8) !important;
+}
+
+/* ===== TÍTULOS ===== */
+h1 {
+  color: var(--text-primary) !important;
+  font-weight: 700 !important;
+  font-size: 2.5rem !important;
+  margin-bottom: 32px !important;
+  padding-bottom: 16px !important;
+  border-bottom: 3px solid var(--pastel-lavender) !important;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+h2 {
+  color: var(--text-primary) !important;
+  font-weight: 600 !important;
+  font-size: 1.8rem !important;
+  margin-top: 48px !important;
+  margin-bottom: 24px !important;
+  padding: 16px 24px !important;
+  background: linear-gradient(135deg, var(--pastel-mint), var(--pastel-sky)) !important;
+  border-radius: 16px !important;
+  border-left: 5px solid #667eea !important;
+}
+
+h3 {
+  color: var(--text-secondary) !important;
+  font-weight: 600 !important;
+  font-size: 1.4rem !important;
+  margin-top: 32px !important;
+  margin-bottom: 16px !important;
+}
+
+/* ===== PÁRRAFOS Y TEXTO ===== */
+p {
+  color: var(--text-secondary) !important;
+  line-height: 1.8 !important;
+  font-size: 1.05rem !important;
+  margin-bottom: 20px !important;
+}
+
+strong {
+  color: var(--text-primary) !important;
+  font-weight: 700 !important;
+}
+
+/* ===== LISTAS ===== */
+ul, ol {
+  color: var(--text-secondary) !important;
+  line-height: 1.8 !important;
+  margin-left: 32px !important;
+}
+
+li {
+  margin-bottom: 12px !important;
+  padding-left: 8px !important;
+}
+
+ul > li::marker {
+  color: #667eea !important;
+  font-size: 1.2em !important;
+}
+
+/* ===== TABLA DE CONTENIDOS (TOC) ===== */
+.md-sidebar--secondary {
+  background: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(10px) !important;
+  border-radius: 20px !important;
+  padding: 24px !important;
+  margin: 24px 16px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+  border: 2px solid var(--pastel-lavender) !important;
+}
+
+.md-nav__title {
+  color: var(--text-primary) !important;
+  font-weight: 700 !important;
+  font-size: 1.1rem !important;
+  padding: 12px 16px !important;
+  background: var(--pastel-mint) !important;
+  border-radius: 12px !important;
+  margin-bottom: 16px !important;
+}
+
+.md-nav__link {
+  color: var(--text-secondary) !important;
+  padding: 8px 16px !important;
+  border-radius: 10px !important;
+  margin: 4px 0 !important;
+  font-size: 0.95rem !important;
+}
+
+.md-nav__link:hover {
+  background: var(--bg-hover) !important;
+  color: var(--text-primary) !important;
+  padding-left: 24px !important;
+}
+
+.md-nav__link--active {
+  background: linear-gradient(135deg, var(--pastel-lavender), var(--pastel-peach)) !important;
+  color: var(--text-primary) !important;
+  font-weight: 600 !important;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2) !important;
+}
+
+/* ===== SIDEBAR IZQUIERDO ===== */
+.md-sidebar--primary {
+  background: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(10px) !important;
+  border-radius: 20px !important;
+  margin: 24px 16px !important;
+  padding: 20px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+  border: 2px solid var(--pastel-sky) !important;
+}
+
+/* ===== BLOQUES DE CÓDIGO ===== */
+pre, code {
+  background: linear-gradient(135deg, #f5f7fa 0%, #eef2f7 100%) !important;
+  border-radius: 12px !important;
+  border: 2px solid var(--pastel-periwinkle) !important;
+  padding: 4px 8px !important;
+}
+
+pre {
+  padding: 20px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* ===== BOTONES Y ENLACES ===== */
+a {
+  color: #667eea !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  border-bottom: 2px solid transparent !important;
+}
+
+a:hover {
+  color: #764ba2 !important;
+  border-bottom: 2px solid #667eea !important;
+}
+
+/* ===== ADMONITIONS (CAJAS DE NOTA) ===== */
+.admonition {
+  border-radius: 16px !important;
+  border: none !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
+  padding: 20px 24px !important;
+  margin: 24px 0 !important;
+}
+
+.admonition-title {
+  font-weight: 700 !important;
+  font-size: 1.1rem !important;
+  margin-bottom: 12px !important;
+}
+
+/* ===== SEARCH BAR ===== */
+.md-search__input {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-radius: 20px !important;
+  border: 2px solid var(--pastel-lavender) !important;
+  padding: 10px 20px !important;
+}
+
+.md-search__input:focus {
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.2) !important;
+  border-color: #667eea !important;
+}
+
+/* ===== FOOTER ===== */
+.md-footer {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-top: 2px solid var(--pastel-mint) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+/* ===== SCROLL SUAVE ===== */
+html {
+  scroll-behavior: smooth !important;
+}
+
+/* ===== EFECTOS DE HOVER GLOBALES ===== */
+.md-typeset table tr:hover {
+  background: var(--bg-hover) !important;
+}
+
+/* ===== BREADCRUMBS ===== */
+.md-nav__link--index {
+  background: var(--pastel-lemon) !important;
+  border-radius: 10px !important;
+  padding: 8px 16px !important;
+  font-weight: 600 !important;
+}
