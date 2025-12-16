@@ -115,7 +115,9 @@ PYTHONPATH=src python3 -m unittest discover -v tests/
 
 <!-- Aquí pega una captura de pantalla de la ejecución de todos los tests -->
 
-![Ejecución de tests](../imagenes/tests-resultado.png)
+![Ejecución de tests - Todos los tests pasando](../Capturas-PPS-Tarea/cap01.png)
+
+![Resumen de tests ejecutados](../Capturas-PPS-Tarea/cap02.png)
 
 ---
 
