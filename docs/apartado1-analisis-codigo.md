@@ -16,7 +16,7 @@ La clase define las siguientes constantes que representan las diferentes fases d
 
 ```python
 # Constantes que definen las diferentes fases del proceso de lavado
-FASE_INACTIVO = 0      # Lavadero sin actividad
+FASE_INACTIVA = 0      # Lavadero sin actividad
 FASE_INICIO = 1         # Fase inicial del lavado
 FASE_PRELAVADO = 2      # Prelavado manual (opcional)
 FASE_LAVADO = 3         # Lavado principal
@@ -31,7 +31,7 @@ FASE_ENCERADO = 8       # Encerado (opcional)
 
 ```python
 def __init__(self):
-    self.fase = self.FASE_INACTIVO     # Fase actual del lavadero
+    self.fase = self.FASE_INACTIVA     # Fase actual del lavadero
     self.ingresos = 0.0                 # Ingresos acumulados
     self.ocupado = False                # Estado de ocupación
     self.prelavado_manual = False       # Opción de prelavado manual
@@ -150,7 +150,7 @@ Método privado que resetea el estado del lavadero al finalizar un ciclo.
 ```python
 def _finalizar_lavado(self):
     # Resetear estado del lavadero
-    self.fase = self.FASE_INACTIVO
+    self.fase = self.FASE_INACTIVA
     self.ocupado = False
     self.prelavado_manual = False
     self.secado_manual = False
