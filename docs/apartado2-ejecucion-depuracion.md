@@ -87,7 +87,21 @@ def avanzarFase(self):
 
 ---
 
-### Error 2: Error Lógico en Validación de Encerado
+**🔴 Estado ANTES de la corrección:**
+
+![Error de indentación en el código original - Vista del archivo con error](../Capturas-PPS-Tarea/cap06.png)
+
+*La captura muestra el archivo `lavadero_mal.py` en VSCode con la indentación incorrecta que causaba el fallo. Se puede observar cómo las líneas dentro del método `hacerLavado` no están correctamente alineadas, lo que genera un IndentationError al intentar ejecutar el código.*
+
+![Ejecución fallida mostrando tests con errores](../Capturas-PPS-Tarea/cap04.png)
+
+*Esta captura muestra la terminal con los tests fallando debido a los errores en el código. Se observan múltiples ERRORs incluyendo AttributeError sobre el método 'hacer_lavado', lo que confirma que el código tenía problemas estructurales.*
+
+**✅ Estado DESPUÉS de la corrección:**
+
+![Código corregido con indentación correcta](../Capturas-PPS-Tarea/cap10.png)
+
+*Aquí se muestra el archivo `lavadero.py` ya corregido, con la indentación apropiada en todas las líneas. El código ahora es sintácticamente correcto y puede ejecutarse sin problemas.*
 
 #### Descripción del Error
 
@@ -118,7 +132,7 @@ def _hacer_lavado(self, prelavado, secado, encerado):
         raise ValueError("No se puede encerar sin secado a mano")
 ```
 
-**Captura de pantalla**: [AQUÍ_CAPTURA_ERROR_LOGICO]
+**Captura de pantalla**: _ERROR_LOGICO]
 
 ---
 
