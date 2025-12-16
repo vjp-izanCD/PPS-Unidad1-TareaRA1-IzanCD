@@ -106,7 +106,7 @@ def avanzarFase(self):
 #### Descripción del Error
 
 **Tipo**: Lógico (no genera excepción pero comportamiento incorrecto)  
-**Ubicación**: Método `_hacer_lavado()` en `lavadero.py`  
+**Ubicación**: Método `hacer_lavado()` en `lavadero.py`  
 **Problema**: La validación que impide encerar sin secado a mano no funcionaba correctamente
 
 #### Causa del Error
@@ -115,7 +115,7 @@ La condición de validación estaba mal implementada:
 
 **Código con error**:
 ```python
-def _hacer_lavado(self, prelavado, secado, encerado):
+def hacer_lavado(self, prelavado, secado, encerado):
     # Validación incorrecta
     if encerado and secado:  # ❌ Lógica invertida
         raise ValueError("No se puede encerar sin secado a mano")
@@ -126,7 +126,7 @@ def _hacer_lavado(self, prelavado, secado, encerado):
 Se corrigió la lógica de la condición:
 
 ```python
-def _hacer_lavado(self, prelavado, secado, encerado):
+def hacer_lavado(self, prelavado, secado, encerado):
     # Validación correcta
     if encerado and not secado:  # ✅ Lógica corregida
         raise ValueError("No se puede encerar sin secado a mano")
@@ -141,7 +141,7 @@ def _hacer_lavado(self, prelavado, secado, encerado):
 #### Descripción del Error
 
 **Tipo**: Error aritmético  
-**Ubicación**: Método `_hacer_lavado()` en `lavadero.py`  
+**Ubicación**: Método `hacer_lavado()` en `lavadero.py`  
 **Problema**: Los precios calculados no coincidían con las especificaciones
 
 #### Causa del Error
@@ -150,7 +150,7 @@ Los valores de los precios estaban mal definidos o la fórmula de cálculo era i
 
 **Código con error**:
 ```python
-def _hacer_lavado(self, prelavado, secado, encerado):
+def hacer_lavado(self, prelavado, secado, encerado):
     self.ingresos = 5.0  # Precio base
     if prelavado:
         self.ingresos += 1.0  # ❌ Valor incorrecto
@@ -165,7 +165,7 @@ def _hacer_lavado(self, prelavado, secado, encerado):
 Se ajustaron los valores según las especificaciones de la tarea:
 
 ```python
-def _hacer_lavado(self, prelavado, secado, encerado):
+def hacer_lavado(self, prelavado, secado, encerado):
     # Precio base: 5.00€
     self.ingresos = 5.0
     
@@ -284,9 +284,9 @@ Fase actual: 1 (Mojado)
 
 | Error | Tipo | Ubicación | Solución |
 |-------|------|-----------|----------|
-| Indentación incorrecta | SyntaxError | `avanzarFase()` | Ajustar espacios de indentación |
-| Validación de encerado | Lógico | `_hacer_lavado()` | Invertir condición booleana |
-| Precios incorrectos | Aritmético | `_hacer_lavado()` | Corregir valores de incremento |
+| Indentación incorrecta | SyntaxError | `lavadero_mal.py` (múltiples líneas) | Ajustar espacios de indentación consistentemente |
+| Validación de encerado | Lógico | `hacer_lavado()` | Invertir condición booleana |
+| Precios incorrectos | Aritmético | `_cobrar()` | Corregir valores: secado 1.20€→1.00€, encerado 1.00€→1.20€ |
 
 ### Herramientas de Depuración Utilizadas
 
