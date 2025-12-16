@@ -141,3 +141,15 @@ La ejecución en sandbox mediante Docker ha demostrado que:
 5. ✅ La aplicación está lista para despliegue en producción
 
 El uso de sandbox es una **práctica esencial** para garantizar la seguridad y estabilidad de las aplicaciones en entornos de producción.
+
+## Capturas de Pantalla
+
+### Ejecución en Sandbox con Docker
+
+A continuación se muestran las capturas de la ejecución exitosa en el entorno sandbox:
+
+![Build de imagen Docker](../Capturas-PPS-Tarea/cap03.png)
+
+![Ejecución de tests en contenedor Docker](../Capturas-PPS-Tarea/cap04.png)
+
+![Resultado de tests en sandbox Docker](../Capturas-PPS-Tarea/cap05.png)
