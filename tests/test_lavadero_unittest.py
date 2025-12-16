@@ -17,7 +17,7 @@ class TestLavadero(unittest.TestCase):
     # ----------------------------------------------------------------------
     def test_reseteo_estado_con_terminar(self):
         """Test 4: Verifica que terminar() resetea todas las flags y el estado."""
-        self.lavadero._hacer_lavado(True, True, True)
+        self.lavadero.hacer_lavado(True, True, True)
         self.lavadero._cobrar()
         self.lavadero.terminar()
         
@@ -39,9 +39,9 @@ class TestLavadero(unittest.TestCase):
    
     def test2_excepcion_encerado_sin_secado(self):
         """Test 2: Comprueba que encerar sin secado a mano lanza ValueError."""
-        # _hacer_lavado: (Prelavado: False, Secado a mano: False, Encerado: True)
+        # hacer_lavado: (Prelavado: False, Secado a mano: False, Encerado: True)
         with self.assertRaises(ValueError):
-            self.lavadero._hacer_lavado(False, False, True)
+            self.lavadero.hacer_lavado(False, False, True)
 
     # ----------------------------------------------------------------------
     # Tests de flujo de fases

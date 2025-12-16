@@ -3,6 +3,7 @@
 class Lavadero:
     """
     Simula el estado y las operaciones de un túnel de lavado de coches.
+    Cumple con los requisitos de estado, avance de fase y reglas de negocio.
     """
 
     # Constantes de fase
@@ -19,6 +20,7 @@ class Lavadero:
     def __init__(self):
         """
         Constructor de la clase. Inicializa el lavadero.
+        Cumple con el requisito 1.
         """
         self.__ingresos = 0.0
         self.__fase = self.FASE_INACTIVO
@@ -71,7 +73,7 @@ class Lavadero:
     # ------------------------
     # INICIO DEL LAVADO
     # ------------------------
-    def _hacer_lavado(self, prelavado_a_mano: bool, secado_a_mano: bool, encerado: bool):
+    def hacer_lavado(self, prelavado_a_mano: bool, secado_a_mano: bool, encerado: bool):
         """
         Inicia un nuevo ciclo de lavado, validando reglas de negocio.
 
@@ -215,7 +217,7 @@ class Lavadero:
         Usada por los tests unitarios.
         """
         # Inicia el lavado mediante la API interna que usa el test
-        self._hacer_lavado(prelavado, secado, encerado)
+        self.hacer_lavado(prelavado, secado, encerado)
 
         fases_visitadas = [self.fase]
 
