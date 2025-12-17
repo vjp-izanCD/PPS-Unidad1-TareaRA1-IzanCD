@@ -1,3 +1,4 @@
+135
 # Apartado 2: Ejecución y Depuración
 
 ## Introducción
@@ -132,7 +133,7 @@ def hacer_lavado(self, prelavado, secado, encerado):
         raise ValueError("No se puede encerar sin secado a mano")
 ```
 
-**Captura de pantalla**: _ERROR_LOGICO]
+
 
 ---
 
@@ -190,7 +191,7 @@ def hacer_lavado(self, prelavado, secado, encerado):
 - Con prelavado + secado: 7.50€ ✅
 - Con prelavado + secado + encerado: 8.70€ ✅
 
-**Captura de pantalla**: [AQUÍ_CAPTURA_ERROR_PRECIOS]
+**Captura de pantalla**: Se valida en tests unitarios (Apartado 3: Test 5-8)
 
 ---
 
