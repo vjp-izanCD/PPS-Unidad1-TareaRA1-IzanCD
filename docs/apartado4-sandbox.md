@@ -4,7 +4,7 @@
 
 Ejecutar la aplicación en un entorno controlado (sandbox) para validar su comportamiento de forma aislada y segura.
 
-## Entorno Utilizado
+## Entorno Utilizado 
 
 **Docker** - Contenedor de aislamiento para ejecutar la aplicación Python de forma segura.
 
