@@ -148,8 +148,8 @@ El uso de sandbox es una **práctica esencial** para garantizar la seguridad y e
 
 A continuación se muestran las capturas de la ejecución exitosa en el entorno sandbox:
 
-![Build de imagen Docker](../Capturas-PPS-Tarea/cap11.png)
+![Build de imagen Docker](https://raw.githubusercontent.com/vjp-izanCD/PPS-Unidad1-TareaRA1-IzanCD/main/Capturas-PPS-Tarea/cap11.png)
 
-![Ejecución de tests en contenedor Docker](../Capturas-PPS-Tarea/cap04.png)
+![Ejecución de tests en contenedor Docker](https://raw.githubusercontent.com/vjp-izanCD/PPS-Unidad1-TareaRA1-IzanCD/main/Capturas-PPS-Tarea/cap04.png)
 
-![Resultado de tests en sandbox Docker](../Capturas-PPS-Tarea/cap05.png)
+![Resultado de tests en sandbox Docker](https://raw.githubusercontent.com/vjp-izanCD/PPS-Unidad1-TareaRA1-IzanCD/main/Capturas-PPS-Tarea/cap05.png)
