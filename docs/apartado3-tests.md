@@ -256,9 +256,9 @@ AssertionError: 'No se puede encerar sin secado a mano' != 'No se puede encerar 
 
 **Capturas de evidencia:**
 
-![Tests fallando inicialmente](../Capturas-PPS-Tarea/cap04.png)
+![Tests fallando inicialmente](https://raw.githubusercontent.com/vjp-izanCD/PPS-Unidad1-TareaRA1-IzanCD/main/Capturas-PPS-Tarea/cap04.png)
 
-![Tests corregidos pasando](../Capturas-PPS-Tarea/cap10.png)
+![Tests corregidos pasando](https://raw.githubusercontent.com/vjp-izanCD/PPS-Unidad1-TareaRA1-IzanCD/main/Capturas-PPS-Tarea/cap10.png)
 
 ---
 
@@ -272,7 +272,7 @@ PYTHONPATH=src python3 -m unittest discover -v tests/
 
 ### Resultado Final:
 
-![Todos los tests pasando](../Capturas-PPS-Tarea/cap10.png)
+![Todos los tests pasando](https://raw.githubusercontent.com/vjp-izanCD/PPS-Unidad1-TareaRA1-IzanCD/main/Capturas-PPS-Tarea/cap10.png)
 
 ---
 
