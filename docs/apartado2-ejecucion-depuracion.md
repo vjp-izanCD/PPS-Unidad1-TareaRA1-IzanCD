@@ -84,8 +84,6 @@ def avanzarFase(self):
         self.fase = self.FASE_MOJADO
 ```
 
-**Captura de pantalla**: [AQUÍ_CAPTURA_ERROR_INDENTACION]
-
 ---
 
 **🔴 Estado ANTES de la corrección:**
@@ -227,8 +225,6 @@ Se establecieron breakpoints estratégicos en:
 2. **Cálculo de precios** → Para verificar los valores calculados
 3. **Método `avanzarFase()`** → Para seguir el flujo de transiciones de estado
 
-**Captura de pantalla**: [AQUÍ_CAPTURA_DEBUGGER_BREAKPOINTS]
-
 ### Inspección de Variables
 
 Durante la depuración se inspeccionaron las siguientes variables clave:
@@ -237,8 +233,6 @@ Durante la depuración se inspeccionaron las siguientes variables clave:
 - `self.ingresos` → Monto acumulado
 - `self.ocupado` → Si hay un lavado en curso
 - `prelavado`, `secado`, `encerado` → Opciones seleccionadas
-
-**Captura de pantalla**: [AQUÍ_CAPTURA_VARIABLES]
 
 ---
 
@@ -264,8 +258,6 @@ Fase actual: 1 (Mojado)
 
 ✅ Lavado completado exitosamente
 ```
-
-**Captura de pantalla**: [AQUÍ_CAPTURA_EJECUCION_EXITOSA]
 
 ---
 
