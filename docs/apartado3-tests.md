@@ -15,10 +15,18 @@ Se ha utilizado **Unittest** (o Pytest) para implementar los 14 tests unitarios 
 **Descripción:** Verifica que al crear un lavadero, este no tiene ingresos, no está ocupado, está en fase 0 y todas las opciones están en false.
 
 ```python
-# Aquí va el código del test 1
+def test1_estado_inicial_correcto(self):
+    """Test 1: Verifica que el estado inicial es Inactivo y con 0 ingresos."""
+    self.assertEqual(self.lavadero.fase, Lavadero.FASE_INACTIVA)
+    self.assertEqual(self.lavadero.ingresos, 0)
+    self.assertFalse(self.lavadero.ocupado)
+    self.assertFalse(self.lavadero.prelavado_manual)
+    self.assertFalse(self.lavadero.secado_manual)
+    self.assertFalse(self.lavadero.encerado)
 ```
 
 **Resultado:**
+
 ```
 ✓ Test pasado correctamente
 ```
@@ -30,42 +38,89 @@ Se ha utilizado **Unittest** (o Pytest) para implementar los 14 tests unitarios 
 **Descripción:** Verifica que se lanza ValueError cuando se intenta hacer encerado sin secado manual.
 
 ```python
-# Aquí va el código del test 2
+def test2_excepcion_encerado_sin_secado(self):
+    """Test 2: Comprueba que encerar sin secado a mano lanza ValueError."""
+    with self.assertRaises(ValueError):
+        self.lavadero.hacer_lavado(False, False, True)
 ```
 
 **Resultado:**
+
 ```
 ✓ Test pasado correctamente
 ```
 
 ---
 
-### Test 3: Excepción - Lavadero Ocupado
+### Test 3: Excepción - Lavado en Curso
 
-**Descripción:** Verifica que se lanza ValueError cuando se intenta iniciar un lavado mientras otro está en curso.
+**Descripción:** Verifica que no se puede iniciar otro lavado si ya está en curso.
 
 ```python
-# Aquí va el código del test 3
+def test3_excepcion_lavado_en_curso(self):
+    """Test 3: Comprueba que no se puede iniciar otro lavado si ya está en curso."""
+    self.lavadero.hacer_lavado(False, False, False)
+    with self.assertRaises(RuntimeError):
+        self.lavadero.hacer_lavado(False, False, False)
+```
+
+**Resultado:**
+
+```
+✓ Test pasado correctamente
 ```
 
 ---
 
-## Tests de Precios (Tests 4-8)
+## Tests de Ingresos (Tests 5-8)
 
-### Test 4: Precio con Prelavado Manual
+### Test 5: Ingresos con Prelavado
+
 **Precio esperado:** 6.50€
 
-### Test 5: Precio con Secado Manual
+```python
+def test5_ingresos_prelavado(self):
+    """Test 5: Ingresos con prelavado a mano."""
+    self.lavadero.hacer_lavado(True, False, False)
+    self.lavadero._cobrar()
+    self.assertEqual(self.lavadero.ingresos, 6.5)
+```
+
+### Test 6: Ingresos con Secado
+
 **Precio esperado:** 6.00€
 
-### Test 6: Precio con Secado + Encerado
+```python
+def test6_ingresos_secado(self):
+    """Test 6: Ingresos con secado a mano."""
+    self.lavadero.hacer_lavado(False, True, False)
+    self.lavadero._cobrar()
+    self.assertEqual(self.lavadero.ingresos, 6.0)
+```
+
+### Test 7: Ingresos con Secado + Encerado
+
 **Precio esperado:** 7.20€
 
-### Test 7: Precio con Prelavado + Secado
-**Precio esperado:** 7.50€
+```python
+def test7_ingresos_secado_encerado(self):
+    """Test 7: Ingresos con secado a mano y encerado."""
+    self.lavadero.hacer_lavado(False, True, True)
+    self.lavadero._cobrar()
+    self.assertEqual(self.lavadero.ingresos, 7.2)
+```
 
-### Test 8: Precio Completo (todas las opciones)
+### Test 8: Ingresos con Prelavado + Secado + Encerado
+
 **Precio esperado:** 8.70€
+
+```python
+def test8_ingresos_prelavado_secado_encerado(self):
+    """Test 8: Ingresos con prelavado, secado y encerado."""
+    self.lavadero.hacer_lavado(True, True, True)
+    self.lavadero._cobrar()
+    self.assertEqual(self.lavadero.ingresos, 8.7)
+```
 
 ---
 
@@ -73,6 +128,21 @@ Se ha utilizado **Unittest** (o Pytest) para implementar los 14 tests unitarios 
 
 ### Test 9: Flujo sin extras
 **Fases esperadas:** 0 → 1 → 3 → 4 → 5 → 6 → 0
+
+```python
+def test9_flujo_rapido_sin_extras(self):
+    """Test 9: Simula el flujo rápido sin opciones opcionales."""
+    fases = []
+    lavadero = Lavadero()
+    lavadero.hacer_lavado(False, False, False)
+    fases.append(lavadero.fase)
+    
+    while lavadero.ocupado:
+        lavadero.avanzarFase()
+        fases.append(lavadero.fase)
+    
+    self.assertEqual(fases, [1, 3, 4, 5, 6, 0])
+```
 
 ### Test 10: Flujo con prelavado
 **Fases esperadas:** 0 → 1 → 2 → 3 → 4 → 5 → 6 → 0
@@ -99,128 +169,117 @@ Durante la ejecución inicial de los tests se encontraron múltiples errores que
 
 **Descripción del problema:**
 
-Los tests 12, 13, 14 y 15 fallaban porque la secuencia de fases no coincidía con lo esperado cuando se seleccionaba secado a mano. El código generaba una fase extra (fase 6 - secado automático) que no debería aparecer.
+Los tests 11, 12, 13, 14 y 15 fallaban porque el método `avanzarFase()` tenía una secuencia de fases incorrecta cuando se seleccionaba secado manual.
 
-**Test afectados:**
-- Test 12: Flujo con secado manual
-- Test 13: Flujo con secado + encerado  
-- Test 14: Flujo con prelavado + secado
-- Test 15: Flujo completo (prelavado + secado + encerado)
-
-**Error detectado:**
+**Código con error:**
+```python
+if self.fase == self.FASE_CENTRIFUGADO:
+    if self.secado_manual:
+        self.fase = self.FASE_ENCERADO  # ❌ Error: salta directamente a encerado
 ```
-Esperado: [0, 1, 3, 4, 5, 7, 0]
-Obtenido: [0, 1, 3, 4, 5, 6, 7, 0]
-```
-
-La fase 6 (secado automático) no debería ejecutarse cuando hay secado a mano seleccionado.
-
-**Causa:**
-
-En el método `avanzarFase()`, la transición desde FASE_RODILLOS (5) siempre pasaba por FASE_SECADO_AUTOMATICO (6), independientemente de si había secado manual o no.
 
 **Solución aplicada:**
-
-Se modificó la lógica en `avanzarFase()` para que cuando `secado_a_mano` es True, pase directamente de la fase 5 a la fase 7, saltándose la fase 6:
-
 ```python
-elif self.__fase == self.FASE_RODILLOS:
-    if self.__secado_a_mano:
-        self.__fase = self.FASE_SECADO_MANO  # Ir directo a fase 7
-    else:
-        self.__fase = self.FASE_SECADO_AUTOMATICO  # Fase 6 solo sin secado manual
+if self.fase == self.FASE_CENTRIFUGADO:
+    if self.secado_manual:
+        self.fase = self.FASE_SECADO_MANUAL  # ✅ Corregido: va primero a secado manual
 ```
 
-### Error 2: Ingresos en 0.0 en lugar de calcular correctamente
+**Tests afectados:** 11, 12, 13, 14, 15
+
+**Solución:** Saltar fase 6 cuando hay secado manual y reemplazarla por fase 7 (secado manual)
+
+---
+
+### Error 2: Ingresos en 0.0€ en lugar de calcular correctamente
 
 **Descripción del problema:**
 
-Los tests 5, 6, 7, 8 y 9 fallaban porque los ingresos permanecían en 0.0€ después de ejecutar `hacer_lavado()`, cuando deberían reflejar el coste calculado según las opciones seleccionadas.
+Los tests 5, 6, 7, 8 y 9 fallaban porque el método `_cobrar()` no existía o no estaba implementado correctamente, resultando en ingresos de 0.0€ en lugar de los valores esperados.
 
-**Tests afectados:**
-- Test 5: Ingresos con prelavado (esperado 6.50€, obtenido 0.0€)
-- Test 6: Ingresos con secado (esperado 6.00€, obtenido 0.0€)
-- Test 7: Ingresos con secado + encerado (esperado 7.20€, obtenido 0.0€)
-- Test 8: Ingresos con prelavado + secado (esperado 7.50€, obtenido 0.0€)
-- Test 9: Ingresos completos (esperado 8.70€, obtenido 0.0€)
-
-**Causa:**
-
-El método `_cobrar()` solo se ejecutaba dentro de `avanzarFase()` al pasar de fase 0 a 1, pero los tests que verifican ingresos llamaban directamente a `hacer_lavado()` sin avanzar fases.
+**Error mostrado:**
+```
+AssertionError: 0.0 != 6.5
+```
 
 **Solución aplicada:**
 
-Se añadió la llamada a `_cobrar()` dentro del método `hacer_lavado()` para que el cobro se realice inmediatamente al iniciar un lavado:
+Implementar correctamente el método `_cobrar()` en la clase `Lavadero`:
 
-```python  
-def hacer_lavado(self, prelavado_a_mano: bool, secado_a_mano: bool, encerado: bool):
-    # ... validaciones ...
-    self.__ocupado = True
-    self.__prelavado_a_mano = prelavado_a_mano
-    self.__secado_a_mano = secado_a_mano
-    self.__encerado = encerado
+```python
+def _cobrar(self):
+    """Calcula y suma los ingresos según las opciones seleccionadas."""
+    # Precio base del lavado
+    self.ingresos += 5.0
     
-    # IMPORTANTE: Cobrar inmediatamente
-    self._cobrar()
+    # Prelavado a mano: +1.50€
+    if self.prelavado_manual:
+        self.ingresos += 1.5
+    
+    # Secado a mano: +1.00€
+    if self.secado_manual:
+        self.ingresos += 1.0
+    
+    # Encerado: +1.20€
+    if self.encerado:
+        self.ingresos += 1.2
 ```
+
+**Tests afectados:** 5, 6, 7, 8, 9
+
+---
 
 ### Error 3: Mensaje de excepción incorrecto
 
 **Descripción del problema:**
 
-El Test 2 fallaba porque el mensaje de la excepción `ValueError` al intentar encerar sin secado manual no coincidía exactamente con el esperado.
+El test 2 fallaba porque el mensaje del ValueError no coincidía exactamente con el esperado.
 
-**Error detectado:**
+**Error mostrado:**
 ```
-Esperado: "Encerado sin secado a mano no permitido"
-Obtenido: "No se puede encerar el coche sin secado a mano"
-```
-
-**Solución aplicada:**
-
-Se cambió el mensaje de error exacto:
-
-```python
-if not secado_a_mano and encerado:
-    raise ValueError("Encerado sin secado a mano no permitido")
+AssertionError: 'No se puede encerar sin secado a mano' != 'No se puede encerar el coche sin secado a mano'
 ```
 
-### Resumen de correcciones
+**Solución:** Cambiar texto exacto del ValueError
+
+**Tests afectados:** 2
+
+---
+
+### RESUMEN DE CORRECCIONES
 
 | Error | Tests afectados | Solución |
-|-------|----------------|----------|
-| Secuencia incorrecta de fases | 12, 13, 14, 15 | Saltar fase 6 cuando hay secado manual |
+|-------|-----------------|----------|
+| Secuencia incorrecta de fases | 11, 12, 13, 14, 15 | Saltar fase 6 cuando hay secado manual |
 | Ingresos en 0.0€ | 5, 6, 7, 8, 9 | Llamar `_cobrar()` en `hacer_lavado()` |
-| Mensaje de excepción | 2 | Cambiar texto exacto del ValueError |
+| Mensaje de Excepción | 2 | Cambiar texto exacto del ValueError |
 
 **Capturas de evidencia:**
 
-![Tests fallando inicialmente](../Capturas-PPS-Tarea/cap12.png)
+![Tests fallando inicialmente](../Capturas-PPS-Tarea/cap04.png)
 
-![Tests corregidos pasando](../Capturas-PPS-Tarea/cap01.png)
+![Tests corregidos pasando](../Capturas-PPS-Tarea/cap10.png)
 
 ---
 
 ## Ejecución de Tests
 
 ### Comando utilizado:
+
 ```bash
 PYTHONPATH=src python3 -m unittest discover -v tests/
 ```
 
 ### Resultado Final:
 
-<!-- Aquí pega una captura de pantalla de la ejecución de todos los tests -->
-
-![Ejecución de tests - Todos los tests pasando](../Capturas-PPS-Tarea/cap01.png)
-
-![Resumen de tests ejecutados](../Capturas-PPS-Tarea/cap02.png)
+![Todos los tests pasando](../Capturas-PPS-Tarea/cap10.png)
 
 ---
 
 ## Conclusiones
 
 Todos los tests han sido implementados correctamente y validan:
+
 - Estado inicial del lavadero
 - Validaciones de excepciones
 - Cálculo correcto de precios
