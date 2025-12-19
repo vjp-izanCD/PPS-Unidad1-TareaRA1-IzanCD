@@ -4,7 +4,7 @@ Bienvenido a la documentacion de la **Tarea Obligatoria Unidad 1 RA1** del modul
 
 ## Informacion General
 
-**Autor**: Izan CD  
+**Autor**: Izan Correa Díaz 
 **Modulo**: Puesta en Produccion Segura  
 **Unidad**: 1 - Prueba de Aplicaciones  
 **Fecha**: Diciembre 2025

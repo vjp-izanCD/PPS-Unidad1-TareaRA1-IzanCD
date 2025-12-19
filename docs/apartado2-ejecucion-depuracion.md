@@ -1,4 +1,3 @@
-135
 # Apartado 2: Ejecución y Depuración
 
 ## Introducción
@@ -292,22 +291,10 @@ Fase actual: 1 (Mojado)
 
 ---
 
-## Capturas de Pantalla Requeridas
-
-Para completar este apartado se deben incluir las siguientes capturas:
-
-1. **Captura del error de indentación** mostrando el mensaje de error en la terminal
-2. **Captura del código antes y después de la corrección** del error de indentación
-3. **Captura del error lógico** en la validación de encerado durante depuración
-4. **Captura del código corregido** de la validación
-5. **Captura del error de precios** mostrando valores incorrectos en el debugger
-6. **Captura del código corregido** con los precios ajustados
-7. **Captura de los breakpoints configurados** en VSCode
-8. **Captura de la ventana de variables** durante la depuración
-9. **Captura de la ejecución exitosa** del programa mostrando la terminal con el nombre de usuario
-10. **Captura de pantalla completa** con el perfil de Moodle visible
-
-> **Nota**: Todas las capturas deben mostrar claramente la ventana completa con el terminal mostrando tu nombre de usuario y/o la plataforma Moodle con tu foto de perfil visible, según los requisitos de la tarea.
+![Build de imagen Docker](https://raw.githubusercontent.com/vjp-izanCD/PPS-Unidad1-TareaRA1-IzanCD/main/Capturas-PPS-Tarea/cap15.png)
+![Build de imagen Docker](https://raw.githubusercontent.com/vjp-izanCD/PPS-Unidad1-TareaRA1-IzanCD/main/Capturas-PPS-Tarea/cap16.png)
+![Build de imagen Docker](https://raw.githubusercontent.com/vjp-izanCD/PPS-Unidad1-TareaRA1-IzanCD/main/Capturas-PPS-Tarea/cap17.png)
+![Build de imagen Docker](https://raw.githubusercontent.com/vjp-izanCD/PPS-Unidad1-TareaRA1-IzanCD/main/Capturas-PPS-Tarea/cap18.png)
 
 ---
 
